@@ -626,10 +626,10 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     }
 
     temp3 = gPlayer[0].pos.x - D_i3_801C4308[73];
-    spF4 = gPlayer[0].pos.y - D_i3_801C4308[77];
     spF8 = gPlayer[0].pos.x - D_i3_801C4308[76];
-    spFC = gPlayer[0].trueZpos - D_i3_801C4308[75];
+    spF4 = gPlayer[0].pos.y - D_i3_801C4308[77];
     var_fs0 = gPlayer[0].trueZpos - D_i3_801C4308[78];
+    spFC = gPlayer[0].trueZpos - D_i3_801C4308[75];
     sp100 = gPlayer[0].pos.y - D_i3_801C4308[74];
     spE8 = Math_RadToDeg(Math_Atan2F(temp3, spFC));
     spE0 = Math_RadToDeg(Math_Atan2F(spF8, var_fs0));
