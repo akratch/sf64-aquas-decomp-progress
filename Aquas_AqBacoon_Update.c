@@ -690,6 +690,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 i = 40;
                             }
                         }
+                        (void) *(volatile f32*) &D_i3_801C4308[73 + (3 * i7)];
                         spD4.x = D_i3_801C4308[73 + (3 * i7)];
                         spD4.y = D_i3_801C4308[74 + (3 * i7)];
                         spD4.z = D_i3_801C4308[75 + (3 * i7)];
