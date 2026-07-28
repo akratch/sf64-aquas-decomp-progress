@@ -697,7 +697,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         i2 = 0;
                         for (i3 = 0; (i2 <= i) && (i3 < ARRAY_COUNT(gActors)); i3++) {
                             if ((gActors[i3].obj.status == OBJ_FREE) && (i3 < ARRAY_COUNT(gActors))) {
-                                actor = (Actor*) ((i2 * 2) + i2);
+                                actor = (Actor*) ((i2 * 4) - i2);
                                 Actor_Initialize(&gActors[i3]);
                                 gActors[i3].obj.status = OBJ_INIT;
                                 gActors[i3].obj.id = OBJ_ACTOR_AQ_PEARL;
@@ -746,12 +746,15 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
         }
     }
-    for (i = 26; i < 107; i += 10) {
+    i = 26;
+    while (i < 107) {
         var_fs0 = D_i3_801C4308[10] - 10;
         if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
             var_fs0 = 0.0f;
         }
         this->info.hitbox[i] = var_fs0;
+        i += 5;
+        i += 5;
     }
 
     if (this->state >= 10) {
