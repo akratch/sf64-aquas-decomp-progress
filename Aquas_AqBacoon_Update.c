@@ -751,15 +751,14 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         }
     }
     i = 26;
-    while (i < 107) {
+    do {
         sp104 = D_i3_801C4308[10] - 10;
         if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
             sp104 = 0.0f;
         }
         this->info.hitbox[i] = sp104;
-        i += 5;
-        i += 5;
-    }
+        i += 10;
+    } while (i < 107);
 
     if (this->state >= 10) {
         sp110 = D_i3_801C42A0[9];
