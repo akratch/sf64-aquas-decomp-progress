@@ -600,21 +600,21 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     for (i3 = 0; i3 < 6; i3++) {
         if ((D_i3_801C42A0[i3 + 1] == 0) && (this->state < 17)) {
             if (((i3 + 1) != this->swork[AQ_SWK_6]) && ((i3 + 1) != this->swork[AQ_SWK_7])) {
-                i2 = D_i3_801C42A0[i3 + 16];
+                i7 = D_i3_801C42A0[i3 + 16];
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i2].x, D_i3_801BFE18[(4 * i3) + i2].x,
-                    D_i3_801BFF38[(4 * i3) + i2].x, 0.00001f
+                    &D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i7].x, D_i3_801BFE18[(4 * i3) + i7].x,
+                    D_i3_801BFF38[(4 * i3) + i7].x, 0.00001f
                 );
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i2].y, D_i3_801BFE18[(4 * i3) + i2].y,
-                    D_i3_801BFF38[(4 * i3) + i2].y, 0.00001f
+                    &D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i7].y, D_i3_801BFE18[(4 * i3) + i7].y,
+                    D_i3_801BFF38[(4 * i3) + i7].y, 0.00001f
                 );
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i2].z, D_i3_801BFE18[(4 * i3) + i2].z,
-                    D_i3_801BFF38[(4 * i3) + i2].z, 0.00001f
+                    &D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i7].z, D_i3_801BFE18[(4 * i3) + i7].z,
+                    D_i3_801BFF38[(4 * i3) + i7].z, 0.00001f
                 );
                 D_i3_801C42A0[i3 + 10]++;
-                if (D_i3_801C42A0[i3 + 10] >= D_i3_801BFDB4[(4 * i3) + i2]) {
+                if (D_i3_801C42A0[i3 + 10] >= D_i3_801BFDB4[(4 * i3) + i7]) {
                     D_i3_801C42A0[i3 + 16]++;
                     if ((D_i3_801C42A0[i3 + 16] >= 4) || (D_i3_801BFDB4[(4 * i3) + D_i3_801C42A0[i3 + 16]] == 100000)) {
                         D_i3_801C42A0[i3 + 10] = 0;
