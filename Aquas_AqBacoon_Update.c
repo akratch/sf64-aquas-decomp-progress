@@ -758,8 +758,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             sp104 = 0.0f;
         }
         this->info.hitbox[i] = sp104;
-        i += 5;
-        i += 5;
+        i += 10;
     } while (i < 107);
 
     if (i2 >= 10) {
