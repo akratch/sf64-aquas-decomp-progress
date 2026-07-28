@@ -464,7 +464,13 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 i = 50;
                                 i2 = 50;
                                 i3 = 50;
-                                actor = (Actor*) 50;
+                                switch (i7) {
+                                    default:
+                                        actor = (Actor*) 50;
+                                        break;
+                                }
+                                actor = (Actor*) ((s32) actor + 1);
+                                actor = (Actor*) ((s32) actor - 1);
                                 if (i) {}
                                 if (i2) {}
                                 if (i3) {}
