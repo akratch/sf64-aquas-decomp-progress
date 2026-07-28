@@ -537,9 +537,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                 break;
 
             case 1:
-                var_fs0 = 2.0f * this->fwork[AQ_FWK_1];
-                Math_SmoothStepToF(&D_i3_801C4308[12], 0.0f, 1.0f, var_fs0, 0.0001f);
-                Math_SmoothStepToF(&D_i3_801C4308[13], 0.0f, 1.0f, var_fs0, 0.0001f);
+                sp104 = 2.0f * this->fwork[AQ_FWK_1];
+                Math_SmoothStepToF(&D_i3_801C4308[12], 0.0f, 1.0f, sp104, 0.0001f);
+                Math_SmoothStepToF(&D_i3_801C4308[13], 0.0f, 1.0f, sp104, 0.0001f);
                 if (this->timer_050 == 0) {
                     this->swork[AQ_SWK_1] = 0;
                     this->timer_050 = 40.0f - ((this->health - 150) / 5.0f);
