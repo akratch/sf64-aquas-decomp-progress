@@ -66,7 +66,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         case 2:
             Aquas_801B0FCC(this);
             if (!(this->timer_056 & 1)) {
-                for (i3 = 0; i3 < 30; i3++) {
+                for (i2 = 0; i2 < 30; i2++) {
                     Aquas_Bubble_Spawn(
                         gBosses[0].obj.pos.x + RAND_FLOAT_CENTERED(1800.0f),
                         gBosses[0].obj.pos.y + RAND_FLOAT_CENTERED(500.0f),
@@ -575,11 +575,11 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         this->swork[AQ_SWK_18] &= 3;
     }
     if ((this->state >= 4) && (this->state < 16)) {
-        sp104 = gPlayer[0].pos.x - this->obj.pos.x;
-        sp100 = gPlayer[0].pos.y - this->obj.pos.y;
-        spFC = gPlayer[0].trueZpos - this->obj.pos.z;
-        spE8 = Math_RadToDeg(Math_Atan2F(sp104, spFC));
-        spE4 = Math_RadToDeg(-Math_Atan2F(sp100, sqrtf((sp104 * sp104) + (spFC * spFC))));
+        spF4 = gPlayer[0].pos.x - this->obj.pos.x;
+        var_fs0 = gPlayer[0].pos.y - this->obj.pos.y;
+        spE0 = gPlayer[0].trueZpos - this->obj.pos.z;
+        spE8 = Math_RadToDeg(Math_Atan2F(spF4, spE0));
+        spE4 = Math_RadToDeg(-Math_Atan2F(var_fs0, sqrtf((spF4 * spF4) + (spE0 * spE0))));
         if ((spE8 <= 40.0f) || (spE8 >= 320.0f)) {
             Math_SmoothStepToAngle(&D_i3_801C4308[15], spE8, 1.0f, 5.0f, 0.001f);
         }
@@ -734,12 +734,12 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
         }
     }
-    for (i7 = 26; i7 < 107; i7 += 10) {
+    for (i = 26; i < 107; i += 10) {
         var_fs0 = D_i3_801C4308[10] - 10;
         if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
             var_fs0 = 0.0f;
         }
-        this->info.hitbox[i7] = var_fs0;
+        this->info.hitbox[i] = var_fs0;
     }
 
     if (this->state >= 10) {
@@ -822,10 +822,10 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                 Math_SmoothStepToF(&D_i3_801C4308[59 + i3], 1.0f, 0.1f, 0.5f, 0.0f);
                 Math_SmoothStepToF(&D_i3_801C4308[66 + i3], 1.0f, 0.1f, 0.5f, 0.0f);
                 if (D_i3_801C4308[i3 + 66] >= 0.9f) {
-                    for (i = 0; i < 3; i++) {
-                        spD4.x = D_i3_801C4308[73 + (3 * i3)] + RAND_FLOAT(i * 200.0f);
-                        spD4.y = D_i3_801C4308[74 + (3 * i3)] + RAND_FLOAT(i * 200.0f);
-                        spD4.z = D_i3_801C4308[75 + (3 * i3)] + RAND_FLOAT(i * 400.0f);
+                    for (i2 = 0; i2 < 3; i2++) {
+                        spD4.x = D_i3_801C4308[73 + (3 * i3)] + RAND_FLOAT(i2 * 200.0f);
+                        spD4.y = D_i3_801C4308[74 + (3 * i3)] + RAND_FLOAT(i2 * 200.0f);
+                        spD4.z = D_i3_801C4308[75 + (3 * i3)] + RAND_FLOAT(i2 * 400.0f);
                         Aquas_SpawnItem(&spD4, OBJ_ITEM_SILVER_RING);
                     }
 
