@@ -464,17 +464,17 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         } else {
                             for (i7 = 0; i7 < AQ_LIMB_MAX; i7 += 4) {
                                 i = 50;
-                                if (i) {}
-                                sAqBacoonlimbTimers[i7 + 0] = i;
                                 i2 = 50;
-                                if (i2) {}
-                                sAqBacoonlimbTimers[i7 + 1] = i2;
                                 i3 = 50;
-                                if (i3) {}
-                                sAqBacoonlimbTimers[i7 + 2] = i3;
                                 actor = (Actor*) 50;
+                                if (i) {}
+                                if (i2) {}
+                                if (i3) {}
                                 if (actor) {}
                                 sAqBacoonlimbTimers[i7 + 3] = (s32) actor;
+                                sAqBacoonlimbTimers[i7 + 2] = i3;
+                                sAqBacoonlimbTimers[i7 + 1] = i2;
+                                sAqBacoonlimbTimers[i7 + 0] = i;
                                 if (0) {}
                             }
 
