@@ -705,17 +705,17 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 gActors[i3].obj.pos.y = D_i3_801C4308[74 + (3 * i7)] + 30.0f;
                                 gActors[i3].obj.pos.z = D_i3_801C4308[75 + (3 * i7)] + 150.0f;
                                 if (Rand_ZeroOne() < 0.5f) {
-                                    var_fs1 = Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(60.0f), 360.0f);
+                                    var_fs0 = Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(60.0f), 360.0f);
                                     sp104 = Math_ModF(D_i3_801C4308[i7 + 18] + RAND_FLOAT_CENTERED(60.0f), 360.0f);
                                     if (this->health < 61) {
                                         if (i7 == 0) {
-                                            var_fs1 =
+                                            var_fs0 =
                                                 Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                             sp104 = Math_ModF(
                                                 (D_i3_801C4308[i7 + 18] - 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f
                                             );
                                         } else {
-                                            var_fs1 =
+                                            var_fs0 =
                                                 Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                             sp104 = Math_ModF(
                                                 (D_i3_801C4308[i7 + 18] + 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f
@@ -723,10 +723,10 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                         }
                                     }
                                 } else {
-                                    var_fs1 = Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
+                                    var_fs0 = Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                     sp104 = Math_ModF(D_i3_801C4308[i7 + 18] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                 }
-                                gActors[i3].fwork[3] = var_fs1;
+                                gActors[i3].fwork[3] = var_fs0;
                                 gActors[i3].fwork[4] = sp104;
                                 gActors[i3].timer_0BC = (s32) actor;
                                 gActors[i3].fwork[1] = D_i3_801C4308[i7 + 16];
@@ -748,11 +748,11 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     }
     i = 26;
     while (i < 107) {
-        var_fs0 = D_i3_801C4308[10] - 10;
+        sp104 = D_i3_801C4308[10] - 10;
         if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
-            var_fs0 = 0.0f;
+            sp104 = 0.0f;
         }
-        this->info.hitbox[i] = var_fs0;
+        this->info.hitbox[i] = sp104;
         i += 5;
         i += 5;
     }
