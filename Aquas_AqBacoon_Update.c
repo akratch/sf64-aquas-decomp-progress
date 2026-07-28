@@ -631,13 +631,13 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     spF4 = gPlayer[0].pos.y - D_i3_801C4308[77];
     spF8 = gPlayer[0].pos.x - D_i3_801C4308[76];
     spFC = gPlayer[0].trueZpos - D_i3_801C4308[75];
-    temp3 = gPlayer[0].trueZpos - D_i3_801C4308[78];
-    sp100 = gPlayer[0].pos.y - D_i3_801C4308[74];
+    spF0 = gPlayer[0].trueZpos - D_i3_801C4308[78];
+    temp3 = gPlayer[0].pos.y - D_i3_801C4308[74];
     spE8 = Math_RadToDeg(Math_Atan2F(var_fs0, spFC));
-    spE0 = Math_RadToDeg(Math_Atan2F(spF8, temp3));
+    spE0 = Math_RadToDeg(Math_Atan2F(spF8, spF0));
     spFC = sqrtf((var_fs0 * var_fs0) + (spFC * spFC));
-    spF0 = sqrtf((spF8 * spF8) + (temp3 * temp3));
-    spE4 = Math_RadToDeg(-Math_Atan2F(sp100, spFC));
+    spF0 = sqrtf((spF8 * spF8) + (spF0 * spF0));
+    spE4 = Math_RadToDeg(-Math_Atan2F(temp3, spFC));
     spEC = Math_RadToDeg(-Math_Atan2F(spF4, spF0));
     if ((spE8 <= 15.0f) || (spE8 >= 310.0f)) {
         Math_SmoothStepToAngle(&D_i3_801C4308[18], spE8, 1.0f, 5.0f, 0.001f);
