@@ -587,9 +587,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     if ((this->state >= 4) && (this->state < 16)) {
         var_fs0 = gPlayer[0].pos.x - this->obj.pos.x;
         sp104 = gPlayer[0].pos.y - this->obj.pos.y;
-        spF8 = gPlayer[0].trueZpos - this->obj.pos.z;
-        spE8 = Math_RadToDeg(Math_Atan2F(var_fs0, spF8));
-        spE4 = Math_RadToDeg(-Math_Atan2F(sp104, sqrtf((var_fs0 * var_fs0) + (spF8 * spF8))));
+        spFC = gPlayer[0].trueZpos - this->obj.pos.z;
+        spE8 = Math_RadToDeg(Math_Atan2F(var_fs0, spFC));
+        spE4 = Math_RadToDeg(-Math_Atan2F(sp104, sqrtf((var_fs0 * var_fs0) + (spFC * spFC))));
         if ((spE8 <= 40.0f) || (spE8 >= 320.0f)) {
             Math_SmoothStepToAngle(&D_i3_801C4308[15], spE8, 1.0f, 5.0f, 0.001f);
         }
