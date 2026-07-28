@@ -462,7 +462,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         if (D_i3_801C42A0[23] != 0) {
                             AUDIO_PLAY_SFX(NA_SE_EN_REFLECT, this->sfxSource, 4);
                         } else {
-                            for (i7 = 0; i7 < AQ_LIMB_MAX; i7 += 4) {
+                            i7 = 0;
+                            do {
                                 i = 50;
                                 i2 = 50;
                                 i3 = 50;
@@ -475,8 +476,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 sAqBacoonlimbTimers[i7 + 2] = i3;
                                 sAqBacoonlimbTimers[i7 + 1] = i2;
                                 sAqBacoonlimbTimers[i7 + 0] = i;
+                                i7 += 4;
                                 if (0) {}
-                            }
+                            } while (&sAqBacoonlimbTimers[i7] != D_i3_801C42A0);
 
                             D_i3_801C42A0[1] = D_i3_801C42A0[2] = D_i3_801C42A0[4] = D_i3_801C42A0[5] =
                                 D_i3_801C42A0[6] = D_i3_801C42A0[7] = 50;
