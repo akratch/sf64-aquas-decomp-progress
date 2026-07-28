@@ -697,6 +697,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         i2 = 0;
                         for (i3 = 0; (i2 <= i) && (i3 < ARRAY_COUNT(gActors)); i3++) {
                             if ((gActors[i3].obj.status == OBJ_FREE) && (i3 < ARRAY_COUNT(gActors))) {
+                                actor = (Actor*) (i2 + i2 + i2);
                                 Actor_Initialize(&gActors[i3]);
                                 gActors[i3].obj.status = OBJ_INIT;
                                 gActors[i3].obj.id = OBJ_ACTOR_AQ_PEARL;
@@ -727,8 +728,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 }
                                 gActors[i3].fwork[3] = var_fs1;
                                 gActors[i3].fwork[4] = var_fs0;
-                                gActors[i3].timer_0BC = i2;
-                                gActors[i3].timer_0BC *= 3;
+                                gActors[i3].timer_0BC = (s32) actor;
                                 gActors[i3].fwork[1] = D_i3_801C4308[i7 + 16];
                                 gActors[i3].fwork[2] = D_i3_801C4308[i7 + 18];
                                 Object_SetInfo(&gActors[i3].info, gActors[i3].obj.id);
