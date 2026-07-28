@@ -774,7 +774,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     }
     for (i2 = 45, i3 = 1, i7 = 0; i7 < 14; i3++, i2++, i7 += 2) {
         if (D_i3_801C42A0[i3] != 0) {
-            D_i3_801C4308[i2] = SIN_DEG(D_i3_801C0060[i7 + 0] * D_i3_801C42A0[i3])
+            D_i3_801C4308[i2] = SIN_DEG(D_i3_801C42A0[i3] * D_i3_801C0060[i7 + 0])
                 * Aquas_801A958C(D_i3_801C42A0[i3], D_i3_801C0060[i7 + 1]);
             D_i3_801C42A0[i3]--;
         }
