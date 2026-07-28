@@ -462,14 +462,24 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         if (D_i3_801C42A0[23] != 0) {
                             AUDIO_PLAY_SFX(NA_SE_EN_REFLECT, this->sfxSource, 4);
                         } else {
-                            for (i7 = 0; i7 < AQ_LIMB_MAX; i7++) {
-                                sAqBacoonlimbTimers[i7] = 50;
+                            for (i7 = 0; i7 < AQ_LIMB_MAX; i7 += 4) {
+                                i = 50;
+                                if (i) {}
+                                sAqBacoonlimbTimers[i7 + 0] = i;
+                                i2 = 50;
+                                if (i2) {}
+                                sAqBacoonlimbTimers[i7 + 1] = i2;
+                                i3 = 50;
+                                if (i3) {}
+                                sAqBacoonlimbTimers[i7 + 2] = i3;
+                                actor = (Actor*) 50;
+                                if (actor) {}
+                                sAqBacoonlimbTimers[i7 + 3] = (s32) actor;
+                                if (0) {}
                             }
 
-                            D_i3_801C42A0[1] =
-                                (D_i3_801C42A0[2] =
-                                     (D_i3_801C42A0[4] =
-                                          (D_i3_801C42A0[5] = (D_i3_801C42A0[6] = (D_i3_801C42A0[7] = 50)))));
+                            D_i3_801C42A0[1] = D_i3_801C42A0[2] = D_i3_801C42A0[4] = D_i3_801C42A0[5] =
+                                D_i3_801C42A0[6] = D_i3_801C42A0[7] = 50;
                             this->swork[AQ_SWK_13] = 40;
                             this->swork[AQ_SWK_1] = 2;
                             AUDIO_PLAY_SFX(NA_SE_EN_SHELL_DAMAGE, this->sfxSource, 4);
