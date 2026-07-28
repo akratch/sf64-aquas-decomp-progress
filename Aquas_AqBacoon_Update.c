@@ -222,8 +222,6 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                     (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 10.0f
                 );
             }
-            if (i3 && i3) {
-            }
             for (i3 = 0; i3 < 3; i3++) {
                 func_effect_80081A8C(
                     this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
