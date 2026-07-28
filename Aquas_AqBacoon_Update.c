@@ -198,9 +198,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
             Math_SmoothStepToF(&D_i3_801C41B8[25], gSurfaceWaterYPos, 1.0f, 100, 0.f);
             Math_SmoothStepToF(&D_i3_801C41B8[26], 128.0f, 1.0f, 100, 0.f);
-            for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
-                if (sAqBacoonlimbTimers[i3] == 0) {
-                    sAqBacoonlimbTimers[i3] = 100;
+            for (i2 = 0; i2 < AQ_LIMB_MAX; i2++) {
+                if (sAqBacoonlimbTimers[i2] == 0) {
+                    sAqBacoonlimbTimers[i2] = 100;
                 }
             }
 
@@ -222,7 +222,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                     (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 10.0f
                 );
             }
-            for (i3 = 0; i3 < 3; i3++) {
+            for (i2 = 0; i2 < 3; i2++) {
                 func_effect_80081A8C(
                     this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
                     (this->obj.pos.y + 200.0f) + RAND_FLOAT_CENTERED(200.0f),
@@ -235,8 +235,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                 gEffects[99].obj.status = OBJ_FREE;
                 Effect_EffectBossExplosion_Spawn(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z + 600.0f, 40.0f);
                 this->timer_056 = 50;
-                for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
-                    sAqBacoonlimbTimers[i3] = 100;
+                for (i2 = 0; i2 < AQ_LIMB_MAX; i2++) {
+                    sAqBacoonlimbTimers[i2] = 100;
                 }
 
                 gFillScreenRed = (gFillScreenGreen = (gFillScreenBlue = (gFillScreenAlpha = 0)));
