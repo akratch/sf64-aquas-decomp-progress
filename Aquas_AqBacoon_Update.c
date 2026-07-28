@@ -697,7 +697,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         i2 = 0;
                         for (i3 = 0; (i2 <= i) && (i3 < ARRAY_COUNT(gActors)); i3++) {
                             if ((gActors[i3].obj.status == OBJ_FREE) && (i3 < ARRAY_COUNT(gActors))) {
-                                actor = (Actor*) (i2 + i2 + i2);
+                                actor = (Actor*) ((i2 * 2) + i2);
                                 Actor_Initialize(&gActors[i3]);
                                 gActors[i3].obj.status = OBJ_INIT;
                                 gActors[i3].obj.id = OBJ_ACTOR_AQ_PEARL;
