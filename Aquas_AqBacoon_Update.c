@@ -493,6 +493,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 SEQCMD_STOP_SEQUENCE(SEQ_PLAYER_FANFARE, 40);
                                 Boss_AwardBonus(this);
                                 Radio_PlayMessage(gMsg_ID_15252, RCID_SLIPPY);
+                                if (this->damage) {}
+                                if (this->damage) {}
                                 gTeamLowHealthMsgTimer = -1;
                                 if ((gPlayer[0].state == PLAYERSTATE_ACTIVE)
                                     || (gPlayer[0].state == PLAYERSTATE_U_TURN))
