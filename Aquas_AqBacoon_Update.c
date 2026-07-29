@@ -1,18 +1,14 @@
-//  unclear how to use the 4 indices
-// loop at 465 unrolls incorrectly
-// sp100 shouldn't be on the stack
-
 void Aquas_AqBacoon_Update(AqBacoon* this) {
-    s32 i;
     s32 i2;
     s32 i3;
+    s32 i6;
     s32 i7;
     Actor* actor;
     f32 sp110;
     f32 var_fs3;
-    f32 var_fs0;
     f32 sp104;
-    Vec3f* sp100;
+    f32 var_fs1;
+    f32 var_fs0;
     f32 spFC;
     f32 spF8;
     f32 spF4;
@@ -23,9 +19,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     f32 spE0;
     Vec3f spD4;
     f32 temp3;
-    f32 var_fs1;
+
     gBossFrameCount++;
-    
+
     switch (this->state) {
         case 0:
             if (this->swork[AQ_SWK_21] == 0) {
@@ -66,12 +62,10 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         case 2:
             Aquas_801B0FCC(this);
             if (!(this->timer_056 & 1)) {
-                for (i2 = 0; i2 < 30; i2++) {
-                    Aquas_Bubble_Spawn(
-                        gBosses[0].obj.pos.x + RAND_FLOAT_CENTERED(1800.0f),
-                        gBosses[0].obj.pos.y + RAND_FLOAT_CENTERED(500.0f),
-                        (gBosses[0].obj.pos.z + 700.0f) + RAND_FLOAT_CENTERED(1000.0f), 7.0f, 2
-                    );
+                for (i3 = 0; i3 < 30; i3++) {
+                    Aquas_Bubble_Spawn(gBosses[0].obj.pos.x + RAND_FLOAT_CENTERED(1800.0f),
+                                       gBosses[0].obj.pos.y + RAND_FLOAT_CENTERED(500.0f),
+                                       (gBosses[0].obj.pos.z + 700.0f) + RAND_FLOAT_CENTERED(1000.0f), 7.0f, 2);
                 }
             }
             if (this->timer_056 == 0) {
@@ -187,8 +181,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         case 16:
             D_ctx_801779A8[0] = 20.0f;
             if (gCameraShake == 0) {
-                gFillScreenAlpha =
-                    (gFillScreenRed = (gFillScreenGreen = (gFillScreenBlue = (gFillScreenAlphaTarget = 255))));
+                gFillScreenRed = gFillScreenGreen = gFillScreenBlue = 255;
+                gFillScreenAlpha = gFillScreenAlphaTarget = 255;
                 gFillScreenAlphaTarget = 0;
                 gFillScreenAlphaStep = 25;
                 gCameraShake = 20 + RAND_FLOAT(20);
@@ -198,9 +192,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
             Math_SmoothStepToF(&D_i3_801C41B8[25], gSurfaceWaterYPos, 1.0f, 100, 0.f);
             Math_SmoothStepToF(&D_i3_801C41B8[26], 128.0f, 1.0f, 100, 0.f);
-            for (i2 = 0; i2 < AQ_LIMB_MAX; i2++) {
-                if (sAqBacoonlimbTimers[i2] == 0) {
-                    sAqBacoonlimbTimers[i2] = 100;
+            for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
+                if (sAqBacoonlimbTimers[i3] == 0) {
+                    sAqBacoonlimbTimers[i3] = 100;
                 }
             }
 
@@ -210,64 +204,55 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                          (D_i3_801C42A0[4] = (D_i3_801C42A0[5] = (D_i3_801C42A0[6] = (D_i3_801C42A0[7] = 50)))));
             }
             if ((gGameFrameCount % 2) == 0) {
-                Effect_Effect390_Spawn(
-                    this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
-                    (this->obj.pos.y + 400.0f) + RAND_FLOAT_CENTERED(400.0f),
-                    (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), this->vel.x, this->vel.y, this->vel.z,
-                    0.5f, 10
-                );
-                Effect_FireSmoke1_Spawn4(
-                    this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
-                    (this->obj.pos.y + 200.0f) + RAND_FLOAT_CENTERED(400.0f),
-                    (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 10.0f
-                );
+                Effect_ElectricArc2_Spawn(this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
+                                          (this->obj.pos.y + 400.0f) + RAND_FLOAT_CENTERED(400.0f),
+                                          (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), this->vel.x,
+                                          this->vel.y, this->vel.z, 0.5f, 10);
+                Effect_FireSmoke1_Spawn4(this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
+                                         (this->obj.pos.y + 200.0f) + RAND_FLOAT_CENTERED(400.0f),
+                                         (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 10.0f);
             }
-            for (i2 = 0; i2 < 3; i2++) {
-                func_effect_80081A8C(
-                    this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
-                    (this->obj.pos.y + 200.0f) + RAND_FLOAT_CENTERED(200.0f),
-                    (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 3.0f + RAND_FLOAT(3.0f), 5
-                );
+            for (i3 = 0; i3 < 3; i3++) {
+                func_effect_80081A8C(this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
+                                     (this->obj.pos.y + 200.0f) + RAND_FLOAT_CENTERED(200.0f),
+                                     (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), 3.0f + RAND_FLOAT(3.0f),
+                                     5);
             }
 
             if (this->timer_056 == 0) {
-                gEffects[98].obj.status = OBJ_FREE;
-                gEffects[99].obj.status = OBJ_FREE;
-                Effect_EffectBossExplosion_Spawn(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z + 600.0f, 40.0f);
+                gEffects[99].obj.status = gEffects[98].obj.status = OBJ_FREE;
+                Effect_BossExplosion_Spawn(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z + 600.0f, 40.0f);
                 this->timer_056 = 50;
-                for (i2 = 0; i2 < AQ_LIMB_MAX; i2++) {
-                    sAqBacoonlimbTimers[i2] = 100;
+                for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
+                    sAqBacoonlimbTimers[i3] = 100;
                 }
 
-                gFillScreenRed = (gFillScreenGreen = (gFillScreenBlue = (gFillScreenAlpha = 0)));
+                gFillScreenRed = gFillScreenGreen = gFillScreenBlue = gFillScreenAlpha = 0;
                 this->state = 17;
             }
             break;
 
         case 17:
             if (this->timer_056 == 20) {
-                gEffects[96].obj.status = OBJ_FREE;
-                gEffects[97].obj.status = OBJ_FREE;
-                Effect_EffectBossExplosion_Spawn(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z + 600.0f, 80.0f);
+                gEffects[97].obj.status = gEffects[96].obj.status = OBJ_FREE;
+                Effect_BossExplosion_Spawn(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z + 600.0f, 80.0f);
             }
             D_i3_801C42A0[0] -= 4;
             if (D_i3_801C42A0[0] < 0) {
                 D_i3_801C42A0[0] = 0;
             }
-            for (i3 = 0; i3 < 21; i3++) {
-                Math_SmoothStepToF(&D_i3_801C4308[52 + i3], 0.1f, 0.1f, 1.0f, 0.0f);
+            for (i3 = 52; i3 < 52 + 21; i3++) {
+                Math_SmoothStepToF(&D_i3_801C4308[i3], 0.1f, 0.1f, 1.0f, 0.0f);
             }
 
             Math_SmoothStepToF(&this->fwork[AQ_FWK_8], 0.1f, 0.1f, 1.0f, 0.0f);
             Math_SmoothStepToF(&this->fwork[AQ_FWK_9], 0.1f, 0.1f, 1.0f, 0.0f);
             Math_SmoothStepToF(&this->fwork[AQ_FWK_10], 0.1f, 0.1f, 1.0f, 0.0f);
             if ((gGameFrameCount % 2) == 0) {
-                Effect_Effect390_Spawn(
-                    this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
-                    (this->obj.pos.y + 400.0f) + RAND_FLOAT_CENTERED(400.0f),
-                    (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), this->vel.x, this->vel.y, this->vel.z,
-                    0.7f, 15
-                );
+                Effect_ElectricArc2_Spawn(this->obj.pos.x + RAND_FLOAT_CENTERED(1200.0f),
+                                          (this->obj.pos.y + 400.0f) + RAND_FLOAT_CENTERED(400.0f),
+                                          (this->obj.pos.z + 1000.0f) + RAND_FLOAT_CENTERED(800.0f), this->vel.x,
+                                          this->vel.y, this->vel.z, 0.7f, 15);
             }
             if (this->timer_056 == 1) {
                 for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
@@ -285,11 +270,9 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         case 18:
             if (this->timer_056 != 0) {
                 for (i3 = 0; i3 < 30; i3++) {
-                    Aquas_Bubble_Spawn(
-                        gBosses[0].obj.pos.x + RAND_FLOAT_CENTERED(1800.0f),
-                        gBosses[0].obj.pos.y + RAND_FLOAT_CENTERED(500.0f),
-                        (gBosses[0].obj.pos.z + 700.0f) + RAND_FLOAT_CENTERED(1000.0f), 7.0f, 2
-                    );
+                    Aquas_Bubble_Spawn(gBosses[0].obj.pos.x + RAND_FLOAT_CENTERED(1800.0f),
+                                       gBosses[0].obj.pos.y + RAND_FLOAT_CENTERED(500.0f),
+                                       (gBosses[0].obj.pos.z + 700.0f) + RAND_FLOAT_CENTERED(1000.0f), 7.0f, 2);
                 }
             }
             break;
@@ -316,7 +299,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             break;
 
         case 3:
-            Math_SmoothStepToF(&D_i3_801C4308[10], D_i3_801C4308[79], 0.5f, 10.0f, 0.0f);
+            Math_SmoothStepToF(&D_i3_801C4308[10], D_i3_801C4308[79], 0.5f, 10, 0.0f);
             if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
                 this->swork[AQ_SWK_0] = 0;
                 this->timer_052 = 0;
@@ -337,13 +320,12 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                     Effect_Effect348_Spawn(this->obj.pos.x, this->obj.pos.z + 800.0f, 0, 100.0f);
                     var_fs3 = 80.0f;
                     for (i2 = 0; i2 < 3; i2++, var_fs3 += 10.0f) {
-                        for (i3 = 0; i3 < 9; i3++) {
-                            var_fs0 = (SIN_DEG((27 + (2 * i3)) * (10.0f + (3 * i2))) * var_fs3) * 10.0f;
-                            var_fs1 = (COS_DEG((27 + (2 * i3)) * (10.0f + (3 * i2))) * var_fs3) * 10.0f;
+                        for (i3 = 27; i3 < 27 + 18; i3 += 2) {
+                            var_fs0 = (SIN_DEG(i3 * (10.0f + (3 * i2))) * var_fs3) * 10;
+                            var_fs1 = (COS_DEG((i3) * (10.0f + (3 * i2))) * var_fs3) * 10.0f;
                             temp3 = gGroundHeight + 30.0f;
-                            Effect_Effect364_Spawn(
-                                this->obj.pos.x + var_fs0, temp3, (this->obj.pos.z + 1000.0f) + var_fs1, 20.0f
-                            );
+                            Effect_Effect364_Spawn(this->obj.pos.x + var_fs0, temp3,
+                                                   (this->obj.pos.z + 1000.0f) + var_fs1, 20.0f);
                         }
                     }
                 }
@@ -453,37 +435,22 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                     break;
 
                 case 18:
-                    if (((((this->damage == 31) && (this->swork[AQ_SWK_1] != 2)) && (this->swork[AQ_SWK_12] == 0))
-                         && (this->state == 15))
-                        && (this->health != 0))
-                    {
+                    if (((((this->damage == 31) && (this->swork[AQ_SWK_1] != 2)) && (this->swork[AQ_SWK_12] == 0)) &&
+                         (this->state == 15)) &&
+                        (this->health != 0)) {
                         if (D_i3_801C42A0[23] != 0) {
                             AUDIO_PLAY_SFX(NA_SE_EN_REFLECT, this->sfxSource, 4);
                         } else {
-                            for (i7 = 0; i7 < AQ_LIMB_MAX; i7 += 4) {
-                                i = 50;
-                                i2 = 50;
-                                i3 = 50;
-                                switch (i7) {
-                                    default:
-                                        actor = (Actor*) 50;
-                                        break;
-                                }
-                                actor = (Actor*) ((s32) actor + 1);
-                                actor = (Actor*) ((s32) actor - 1);
-                                if (i) {}
-                                if (i2) {}
-                                if (i3) {}
-                                if (actor) {}
-                                sAqBacoonlimbTimers[i7 + 3] = (s32) actor;
-                                sAqBacoonlimbTimers[i7 + 2] = i3;
-                                sAqBacoonlimbTimers[i7 + 1] = i2;
-                                sAqBacoonlimbTimers[i7 + 0] = i;
-                                if (0) {}
+                            for (i3 = 0; i3 < AQ_LIMB_MAX; i3++) {
+                                sAqBacoonlimbTimers[i3] = 50;
                             }
 
-                            D_i3_801C42A0[1] = D_i3_801C42A0[2] = D_i3_801C42A0[4] = D_i3_801C42A0[5] =
-                                D_i3_801C42A0[6] = D_i3_801C42A0[7] = 50;
+                            ((u32*) D_i3_801C42A0)[1] =
+                                (((u32*) D_i3_801C42A0)[2] =
+                                     (((u32*) D_i3_801C42A0)[4] =
+                                          (((u32*) D_i3_801C42A0)[5] =
+                                               (((u32*) D_i3_801C42A0)[6] = (((u32*) D_i3_801C42A0)[7] = 50)))));
+
                             this->swork[AQ_SWK_13] = 40;
                             this->swork[AQ_SWK_1] = 2;
                             AUDIO_PLAY_SFX(NA_SE_EN_SHELL_DAMAGE, this->sfxSource, 4);
@@ -497,12 +464,10 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 SEQCMD_STOP_SEQUENCE(SEQ_PLAYER_FANFARE, 40);
                                 Boss_AwardBonus(this);
                                 Radio_PlayMessage(gMsg_ID_15252, RCID_SLIPPY);
-                                if (this->damage) {}
-                                if (this->damage) {}
+
                                 gTeamLowHealthMsgTimer = -1;
-                                if ((gPlayer[0].state == PLAYERSTATE_ACTIVE)
-                                    || (gPlayer[0].state == PLAYERSTATE_U_TURN))
-                                {
+                                if ((gPlayer[0].state == PLAYERSTATE_ACTIVE) ||
+                                    (gPlayer[0].state == PLAYERSTATE_U_TURN)) {
                                     gPlayer[0].state = PLAYERSTATE_LEVEL_COMPLETE;
                                     gPlayer[0].csState = 0;
                                 }
@@ -603,24 +568,16 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             Math_SmoothStepToAngle(&D_i3_801C4308[14], spE4, 1.0f, 5.0f, 0.001f);
         }
     }
-    sp100 = D_i3_801BFE18;
-
     for (i3 = 0; i3 < 6; i3++) {
         if ((D_i3_801C42A0[i3 + 1] == 0) && (this->state < 17)) {
             if (((i3 + 1) != this->swork[AQ_SWK_6]) && ((i3 + 1) != this->swork[AQ_SWK_7])) {
                 i7 = D_i3_801C42A0[i3 + 16];
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i7].x, sp100[(4 * i3) + i7].x,
-                    D_i3_801BFF38[(4 * i3) + i7].x, 0.00001f
-                );
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i7].y, sp100[(4 * i3) + i7].y,
-                    D_i3_801BFF38[(4 * i3) + i7].y, 0.00001f
-                );
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i7].z, sp100[(4 * i3) + i7].z,
-                    D_i3_801BFF38[(4 * i3) + i7].z, 0.00001f
-                );
+                Math_SmoothStepToF(&D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i7].x,
+                                   D_i3_801BFE18[(4 * i3) + i7].x, D_i3_801BFF38[(4 * i3) + i7].x, 0.00001f);
+                Math_SmoothStepToF(&D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i7].y,
+                                   D_i3_801BFE18[(4 * i3) + i7].y, D_i3_801BFF38[(4 * i3) + i7].y, 0.00001f);
+                Math_SmoothStepToF(&D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i7].z,
+                                   D_i3_801BFE18[(4 * i3) + i7].z, D_i3_801BFF38[(4 * i3) + i7].z, 0.00001f);
                 D_i3_801C42A0[i3 + 10]++;
                 if (D_i3_801C42A0[i3 + 10] >= D_i3_801BFDB4[(4 * i3) + i7]) {
                     D_i3_801C42A0[i3 + 16]++;
@@ -657,15 +614,13 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     if ((spEC <= 12.0f) || (spEC >= 330.0f)) {
         Math_SmoothStepToAngle(&D_i3_801C4308[17], spEC, 1.0f, 5.0f, 0.001f);
     }
-    if ((((this->swork[AQ_SWK_2] == 1) && (this->swork[AQ_SWK_8] != 0)) && (this->health != 0))
-        && (this->swork[AQ_SWK_6] == 0))
-    {
+    if ((((this->swork[AQ_SWK_2] == 1) && (this->swork[AQ_SWK_8] != 0)) && (this->health != 0)) &&
+        (this->swork[AQ_SWK_6] == 0)) {
         D_i3_801C42A0[10] = (D_i3_801C42A0[16] = 0);
         this->swork[AQ_SWK_6] = 1;
     }
-    if ((((this->swork[AQ_SWK_3] == 1) && (this->swork[AQ_SWK_9] != 0)) && (this->health != 0))
-        && (this->swork[AQ_SWK_7] == 0))
-    {
+    if ((((this->swork[AQ_SWK_3] == 1) && (this->swork[AQ_SWK_9] != 0)) && (this->health != 0)) &&
+        (this->swork[AQ_SWK_7] == 0)) {
         D_i3_801C42A0[11] = (D_i3_801C42A0[17] = 0);
         this->swork[AQ_SWK_7] = 2;
     }
@@ -673,27 +628,24 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
         for (i7 = 0; i7 < 2; i7++) {
             if (this->swork[AQ_SWK_6 + i7] != 0) {
                 i2 = this->swork[AQ_SWK_4 + i7];
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[52 + i7], D_i3_801C00B0[0][i2], D_i3_801C00F0[0][i2], D_i3_801C0120[0][i2], 0.00001f
-                );
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[59 + i7], D_i3_801C00B0[1][i2], D_i3_801C00F0[1][i2], D_i3_801C0120[1][i2], 0.00001f
-                );
-                Math_SmoothStepToF(
-                    &D_i3_801C4308[66 + i7], D_i3_801C00B0[2][i2], D_i3_801C00F0[2][i2], D_i3_801C0120[2][i2], 0.00001f
-                );
+                Math_SmoothStepToF(&D_i3_801C4308[52 + i7], D_i3_801C00B0[0][i2], D_i3_801C00F0[0][i2],
+                                   D_i3_801C0120[0][i2], 0.00001f);
+                Math_SmoothStepToF(&D_i3_801C4308[59 + i7], D_i3_801C00B0[1][i2], D_i3_801C00F0[1][i2],
+                                   D_i3_801C0120[1][i2], 0.00001f);
+                Math_SmoothStepToF(&D_i3_801C4308[66 + i7], D_i3_801C00B0[2][i2], D_i3_801C00F0[2][i2],
+                                   D_i3_801C0120[2][i2], 0.00001f);
                 D_i3_801C42A0[i7 + 10]++;
                 if (D_i3_801C42A0[i7 + 10] >= D_i3_801C00E0[i2]) {
                     this->swork[AQ_SWK_4 + i7]++;
                     if (this->swork[AQ_SWK_4 + i7] == 2) {
-                        i = 4;
+                        i6 = 4;
                         if (D_i3_801C42A0[23] == 0) {
-                            i = ((160 - this->health) / 10) + 10;
+                            i6 = ((160 - this->health) / 10) + 10;
                             if (this->health < 31) {
-                                i += 10;
+                                i6 += 10;
                             }
-                            if (i > 40) {
-                                i = 40;
+                            if (i6 > 40) {
+                                i6 = 40;
                             }
                         }
                         spD4.x = D_i3_801C4308[73 + (3 * i7)];
@@ -701,9 +653,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                         spD4.z = D_i3_801C4308[75 + (3 * i7)];
                         Effect_TimedSfx_Spawn(&spD4, NA_SE_EN_P_BALL_SHOT);
                         i2 = 0;
-                        for (i3 = 0; (i2 <= i) && (i3 < ARRAY_COUNT(gActors)); i3++) {
+                        for (i3 = 0; (i2 <= i6) && (i3 < ARRAY_COUNT(gActors)); i3++) {
                             if ((gActors[i3].obj.status == OBJ_FREE) && (i3 < ARRAY_COUNT(gActors))) {
-                                actor = (Actor*) ((i2 * 4) - i2);
                                 Actor_Initialize(&gActors[i3]);
                                 gActors[i3].obj.status = OBJ_INIT;
                                 gActors[i3].obj.id = OBJ_ACTOR_AQ_PEARL;
@@ -718,14 +669,12 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                             var_fs0 =
                                                 Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                             sp104 = Math_ModF(
-                                                (D_i3_801C4308[i7 + 18] - 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f
-                                            );
+                                                (D_i3_801C4308[i7 + 18] - 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f);
                                         } else {
                                             var_fs0 =
                                                 Math_ModF(D_i3_801C4308[i7 + 16] + RAND_FLOAT_CENTERED(30.0f), 360.0f);
                                             sp104 = Math_ModF(
-                                                (D_i3_801C4308[i7 + 18] + 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f
-                                            );
+                                                (D_i3_801C4308[i7 + 18] + 30.0f) + RAND_FLOAT_CENTERED(20.0f), 360.0f);
                                         }
                                     }
                                 } else {
@@ -734,7 +683,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
                                 }
                                 gActors[i3].fwork[3] = var_fs0;
                                 gActors[i3].fwork[4] = sp104;
-                                gActors[i3].timer_0BC = (s32) actor;
+                                gActors[i3].timer_0BC = i2 * 3;
                                 gActors[i3].fwork[1] = D_i3_801C4308[i7 + 16];
                                 gActors[i3].fwork[2] = D_i3_801C4308[i7 + 18];
                                 Object_SetInfo(&gActors[i3].info, gActors[i3].obj.id);
@@ -752,23 +701,20 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
         }
     }
-    i2 = this->state;
-    i = 26;
-    do {
+    for (i3 = 26; i3 < 107; i3 += 10) {
         sp104 = D_i3_801C4308[10] - 10;
         if (fabsf(D_i3_801C4308[10]) <= 5.0f) {
             sp104 = 0.0f;
         }
-        this->info.hitbox[i] = sp104;
-        i += 10;
-    } while (i < 107);
+        this->info.hitbox[i3] = sp104;
+    }
 
-    if (i2 >= 10) {
+    if (this->state >= 10) {
+        i3 = gGameFrameCount & 0x1F;
         sp110 = D_i3_801C42A0[9];
-        i2 = gGameFrameCount & 0x1F;
         if (sAqBacoonlimbTimers[AQ_LIMB_9] != 0) {
             Math_SmoothStepToF(&sp110, 255.0f, 1.0f, 10, 0.0001f);
-        } else if ((i2 & 0x10) == 0) {
+        } else if ((i3 & 0x10) == 0) {
             Math_SmoothStepToF(&sp110, D_i3_801C005C, 1.0f, 10, 0.0001f);
         } else {
             Math_SmoothStepToF(&sp110, D_i3_801C0058, 1.0f, 10, 0.0001f);
@@ -780,8 +726,8 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     }
     for (i2 = 45, i3 = 1, i7 = 0; i7 < 14; i3++, i2++, i7 += 2) {
         if (D_i3_801C42A0[i3] != 0) {
-            D_i3_801C4308[i2] = SIN_DEG(D_i3_801C42A0[i3] * D_i3_801C0060[i7 + 0])
-                * Aquas_801A958C(D_i3_801C42A0[i3], D_i3_801C0060[i7 + 1]);
+            D_i3_801C4308[i2] = SIN_DEG(D_i3_801C42A0[i3] * D_i3_801C0060[i7 + 0]) *
+                                Aquas_801A958C(D_i3_801C42A0[i3], D_i3_801C0060[i7 + 1]);
             D_i3_801C42A0[i3]--;
         }
     }
@@ -817,7 +763,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             }
         } else {
             Math_SmoothStepToF(&D_i3_801C4308[54], 0, 0.1f, 10, 0);
-            Math_SmoothStepToF(&D_i3_801C4308[61], 0, 0.1f, 10.0f, 0);
+            Math_SmoothStepToF(&D_i3_801C4308[61], 0, 0.1f, 10, 0);
             D_i3_801C42A0[9] -= 5;
             if (D_i3_801C42A0[9] < 0) {
                 D_i3_801C42A0[9] = 0;
