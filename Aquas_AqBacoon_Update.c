@@ -12,7 +12,7 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
     f32 var_fs3;
     f32 var_fs0;
     f32 sp104;
-    f32 sp100;
+    Vec3f* sp100;
     f32 spFC;
     f32 spF8;
     f32 spF4;
@@ -603,20 +603,22 @@ void Aquas_AqBacoon_Update(AqBacoon* this) {
             Math_SmoothStepToAngle(&D_i3_801C4308[14], spE4, 1.0f, 5.0f, 0.001f);
         }
     }
+    sp100 = D_i3_801BFE18;
+
     for (i3 = 0; i3 < 6; i3++) {
         if ((D_i3_801C42A0[i3 + 1] == 0) && (this->state < 17)) {
             if (((i3 + 1) != this->swork[AQ_SWK_6]) && ((i3 + 1) != this->swork[AQ_SWK_7])) {
                 i7 = D_i3_801C42A0[i3 + 16];
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i7].x, D_i3_801BFE18[(4 * i3) + i7].x,
+                    &D_i3_801C4308[52 + i3], D_i3_801BFC94[(4 * i3) + i7].x, sp100[(4 * i3) + i7].x,
                     D_i3_801BFF38[(4 * i3) + i7].x, 0.00001f
                 );
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i7].y, D_i3_801BFE18[(4 * i3) + i7].y,
+                    &D_i3_801C4308[59 + i3], D_i3_801BFC94[(4 * i3) + i7].y, sp100[(4 * i3) + i7].y,
                     D_i3_801BFF38[(4 * i3) + i7].y, 0.00001f
                 );
                 Math_SmoothStepToF(
-                    &D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i7].z, D_i3_801BFE18[(4 * i3) + i7].z,
+                    &D_i3_801C4308[66 + i3], D_i3_801BFC94[(4 * i3) + i7].z, sp100[(4 * i3) + i7].z,
                     D_i3_801BFF38[(4 * i3) + i7].z, 0.00001f
                 );
                 D_i3_801C42A0[i3 + 10]++;
